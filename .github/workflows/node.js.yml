@@ -28,7 +28,7 @@ jobs:
         git stash --include-untracked
         git checkout distrib
         git pull
-        git stash pop
+        git stash show -p | git apply
         git add ./dist
         git commit -m "hello world again"
         git push
