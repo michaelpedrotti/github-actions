@@ -26,6 +26,7 @@ jobs:
         git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
         git fetch
         git checkout distrib
+        git pull
         git add ./dist
         git commit -m "hello world again"
         git push
