@@ -20,4 +20,11 @@ jobs:
     - run: ng build
     - name: List Files in Distribution Directory
       run: ls -R ./dist
-    - run: echo "${{ github.event.repository }}"
+    - name: perform merge
+      run: |
+        git config --global user.email "${GITHUB_ACTOR}"
+        git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+        git checkout production
+        git add ./dist
+        git commit -m "hello world again"
+        git push
