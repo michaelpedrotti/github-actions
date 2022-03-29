@@ -25,7 +25,7 @@ jobs:
         git config --global user.email "${GITHUB_ACTOR}"
         git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
         git fetch
-        git checkout production
+        git checkout distrib
         git add ./dist
         git commit -m "hello world again"
         git push
