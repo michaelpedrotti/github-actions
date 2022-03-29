@@ -28,6 +28,5 @@ jobs:
         git stash push -- ./dist
         git checkout distrib
         git stash pop
-        git add ./dist
         git commit -m "hello world again"
         git push
