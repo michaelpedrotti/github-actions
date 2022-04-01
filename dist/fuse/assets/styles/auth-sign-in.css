@@ -1,0 +1,10 @@
+body auth-sign-in {
+    margin: 0;
+    padding: 0;
+    background: url("../images/backgrounds/login.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
