@@ -22,13 +22,13 @@ jobs:
       run: ls -R ./dist
     - name: perform merge
       run: |
-        git config --global user.email "${GITHUB_ACTOR}"
-        git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+        git config --global user.email "bot@zyx.io"
+        git config --global user.name "Deploy Bot"
         git fetch
         git stash --include-untracked
         git checkout distrib
         git pull
         git checkout stash -- .
         git add ./dist
-        git commit -m "hello world again"
+        git commit -m "ng build"
         git push
