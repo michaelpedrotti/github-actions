@@ -1,0 +1,34 @@
+name: Node.js CI
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm install -g @angular/cli
+    - run: npm install
+    - run: ng build
+    - name: List Files in Distribution Directory
+      run: ls -R ./dist
+    - name: perform merge
+      run: |
+        git config --global user.email "${GITHUB_ACTOR}"
+        git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
+        git fetch
+        git stash --include-untracked
+        git checkout distrib
+        git pull
+        git stash apply stash@{0}
+        git add ./dist
+        git commit -m "hello world again"
+        git push
