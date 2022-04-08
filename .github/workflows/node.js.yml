@@ -32,3 +32,4 @@ jobs:
         git add ./dist
         git commit -m "ng build"
         git push
+
